@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+    wordpress:
+        container_name: wordpress
+        build: 
+            context: ./docker
+            args:
+                - UID=$U_ID
+        ports:
+            - "8080:80"
+        environment:
+            WORDPRESS_DB_HOST: wordpress_db
+            WORDPRESS_DB_USER: exampleuser
+            WORDPRESS_DB_PASSWORD: examplepass
+            WORDPRESS_DB_NAME: exampledb
+        volumes:
+            - ./:/var/www/html
+
+    wordpress_db:
+        container_name: wordpress_db
+        image: mysql
+        environment:
+            MYSQL_DATABASE: exampledb
+            MYSQL_USER: exampleuser
+            MYSQL_PASSWORD: examplepass
+            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+        volumes:
+            - wordpress_db:/var/lib/mysql
+
+volumes:
+    wordpress_db:
