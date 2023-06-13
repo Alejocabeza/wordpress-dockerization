@@ -17,6 +17,8 @@ help: ## Show this help message
 	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
 
 start: ## Start the containers
+	sudo chmod -R 777 wp-content
+	sudo chown -R www-data:www-data wp-content
 	U_ID=${UID} docker-compose up -d
 
 stop: ## Stop the containers

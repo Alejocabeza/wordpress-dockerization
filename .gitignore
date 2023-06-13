@@ -1,4 +1,4 @@
-/wp-contet/themes/**
-/wp-contet/plugins/**
-/wp-contet/updgrade/**
-/wp-contet/uploads/**
+/wp-content/themes/*
+/wp-content/plugins/*
+/wp-content/updgrade/*
+/wp-content/uploads/*
