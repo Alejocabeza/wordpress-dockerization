@@ -1,9 +1,9 @@
-version: '3.9'
+version: "3.9"
 
 services:
     wordpress:
         container_name: wordpress
-        build: 
+        build:
             context: ./docker
             args:
                 - UID=$U_ID
@@ -20,11 +20,13 @@ services:
     wordpress_db:
         container_name: wordpress_db
         image: mysql
+        ports:
+            - 3308:3306
         environment:
             MYSQL_DATABASE: exampledb
             MYSQL_USER: exampleuser
             MYSQL_PASSWORD: examplepass
-            MYSQL_RANDOM_ROOT_PASSWORD: '1'
+            MYSQL_RANDOM_ROOT_PASSWORD: "1"
         volumes:
             - wordpress_db:/var/lib/mysql
 
