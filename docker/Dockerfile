@@ -13,6 +13,8 @@ RUN apt-get update \
 	&& pecl install amqp \
 	&& docker-php-ext-enable --ini-name 05-opcache.ini opcache amqp xdebug
 
+COPY ./php.ini /usr/local/etc/php/php.ini
+
 RUN curl --insecure https://getcomposer.org/composer.phar -o /usr/bin/composer && chmod +x /usr/bin/composer
 RUN composer self-update
 
